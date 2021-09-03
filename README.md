@@ -11,9 +11,16 @@ brew bundle dump --force --describe
 ```
 
 ## TODO:
+### MAC:
 - Finish the manual installation text
 - Add global npm package.json file (where is it!?!?!)
 - Add platformio plugin to VS Code or find a way to code, run, autocomplete and linter arduino in nvim
+- Configure PopOS and backup dotfiles here
+
+### PopOS
+- Finish new NVIM configuration
+- install and configure Polybar
+- finish configuration of Alacritty (terminal emulator)
 
 ## Install using script
 1. cd into the repo folder and run install script

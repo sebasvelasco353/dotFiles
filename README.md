@@ -10,18 +10,6 @@ install script remember to add them to the brew file using this command in the .
 brew bundle dump --force --describe
 ```
 
-## TODO:
-### MAC:
-- Finish the manual installation text
-- Add global npm package.json file (where is it!?!?!)
-- Add platformio plugin to VS Code or find a way to code, run, autocomplete and linter arduino in nvim
-- Configure PopOS and backup dotfiles here
-
-### PopOS
-- Finish new NVIM configuration
-- install and configure Polybar
-- finish configuration of Alacritty (terminal emulator)
-
 ## Install using script
 1. cd into the repo folder and run install script
 ```
@@ -57,3 +45,14 @@ Collection of screenshots to show how and what i use this dotfiles for.
 ![Floating Terminal](./assets/Screenshot4.png "Floating Terminal")
 ### Key mappings index
 ![Which Key](./assets/Screenshot5.png "Which Key")
+
+## TODO:
+### MAC:
+- Finish the manual installation text
+- Add global npm package.json file (where is it!?!?!)
+- Add platformio plugin to VS Code or find a way to code, run, autocomplete and linter arduino in nvim
+
+### PopOS:
+- Finish new NVIM configuration
+- install and configure Polybar
+- finish configuration of Alacritty (terminal emulator)

@@ -64,11 +64,6 @@ with this update the OS and should have no problem running the following command
 	# Calibre Ebook
 	sudo apt install calibre
 
-	# nerd Fonts
-	brew tap homebrew/cask-fonts
-	brew install --cask font-hack-nerd-font
-
-
 ### Other installs that have to be done using the pop_Shop
 
 	postman

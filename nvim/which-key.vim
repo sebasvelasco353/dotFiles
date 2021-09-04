@@ -48,16 +48,3 @@ let g:which_key_map.s = {
       \ 'y' : [':Filetypes'    , 'file types'],
       \ 'z' : [':Telescope find_files', 'Fuzzy Find'],
       \ }
-
-let which_key_map.f = {
-                  \ 'name' : '+Floating-Terminal',
-                  \ 'l' : [':FloatermNew --autoclose=2 --height=0.8 --width=0.8 --wintype=floating lazygit', 'LazyGit'],
-                  \ 't' : [':FloatermNew --autoclose=2 --height=0.75 --width=0.75 --wintype=floating', 'New Terminal'],
-                  \ }
-
-let g:which_key_map['c'] = { 'name': 'which_key_ignore' }
-let g:which_key_map['n'] = { 'name': 'which_key_ignore' }
-let g:which_key_map['u'] = { 'name': 'which_key_ignore' }
-
-" Register which key map
-call which_key#register(' ', "g:which_key_map")

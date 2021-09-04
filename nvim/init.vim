@@ -64,7 +64,7 @@ Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 set background=dark
-colorscheme synthwave84
+colorscheme gruvbox
 
 source ~/.config/nvim/which-key.vim
 

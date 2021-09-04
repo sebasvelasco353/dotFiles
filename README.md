@@ -71,6 +71,7 @@ with this update the OS and should have no problem running the following command
 	Steam
 	drawio
 	Figma
+	Fritzing
 	GNU image manipulation
 
 ### NPM installations

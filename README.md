@@ -95,7 +95,7 @@ with this update the OS and should have no problem running the following command
 ## install the theme
 to install the theme the only thing needed is to clone the repo of the theme you want on the .themes folder on the home directory (and create said folder), in mi case i like Juno so:
 
-	cd && mkdir .themes
+	cd && mkdir .themes && cd .themes
 	git clone https://github.com/EliverLara/Juno.git
 
 ## TODO:

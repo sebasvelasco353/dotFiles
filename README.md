@@ -27,6 +27,11 @@ with this update the OS and should have no problem running the following command
 	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb
 	sudo dpkg -i ripgrep_12.1.1_amd64.deb
 
+	# Lazygit:
+	sudo add-apt-repository ppa:lazygit-team/release
+	sudo apt-get update
+	sudo apt-get install lazygit
+
 	# google chrome:
 	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	sudo apt install ./google-chrome-stable_current_amd64.deb

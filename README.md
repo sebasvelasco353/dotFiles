@@ -23,11 +23,9 @@ with this update the OS and should have no problem running the following command
 	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-	# HomeBrew
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
 	# ripGrep
-	brew install ripgrep
+	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb
+	sudo dpkg -i ripgrep_12.1.1_amd64.deb
 
 	# google chrome:
 	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

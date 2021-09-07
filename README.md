@@ -44,6 +44,19 @@ with this update the OS and should have no problem running the following command
 	# Use NVM to install latest LTS version of node:
 	nvm install --lts && node -v
 
+	# install Zsh and Oh my zsh
+	sudo apt install zsh
+	chsh -s $(which zsh)
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+	# clone zsh plugins to folder
+	cd ~/.oh-my-zsh/custom/plugins
+	git clone https://github.com/zsh-users/zsh-autosuggestions.git
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+	# install powerlevel10k
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 	# Tmux:
 	sudo apt-get install tmux
 
@@ -71,6 +84,15 @@ with this update the OS and should have no problem running the following command
 	curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add - 
 	echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 	sudo apt-get update && sudo apt-get install spotify-client
+
+### Create symlinks
+	ln -s ./nvim/init.vim ~/.config/nvim/
+	ln -s ./nvim/which-key.vim ~/.config/nvim/
+
+	ln -s ./alacritty ~/.config/
+
+	ln -s ~/Documents/dotfiles/.zshrc ~/.zshrc
+	ln -s ~Documents/dotfiles/.p10k.zsh ~/.p10k.zsh
 
 ### Other installs that have to be done using the pop_Shop
 

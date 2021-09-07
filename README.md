@@ -70,7 +70,6 @@ with this update the OS and should have no problem running the following command
 ### Other installs that have to be done using the pop_Shop
 
 	postman
-	Spotify
 	Steam
 	drawio
 	Figma

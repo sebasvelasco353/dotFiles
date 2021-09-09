@@ -4,8 +4,8 @@ filetype plugin indent on
 let mapleader = " "
 
 set exrc
+set hidden
 set guicursor=n-v-c-i:block-Curso
-set cursorcolumn
 set relativenumber
 set nohlsearch
 set hidden
@@ -37,6 +37,7 @@ set splitbelow
 set listchars=tab:\|\
 set list
 
+
 call plug#begin('~/.config/nvim/plugged')
 "Themes
 Plug 'gruvbox-community/gruvbox'
@@ -47,39 +48,61 @@ Plug 'artanikin/vim-synthwave84'
 "Utilities
 Plug 'ap/vim-css-color'
 Plug 'mbbill/undotree'
-Plug 'leafOfTree/vim-vue-plugin'
-Plug 'leafgarland/typescript-vim'
 Plug 'preservim/nerdtree'
 Plug 'jiangmiao/auto-pairs'
-Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'sheerun/vim-polyglot'
-Plug 'dense-analysis/ale'
-Plug 'mhinz/vim-signify'
 Plug 'liuchengxu/vim-which-key'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
-"Search and autocomplete
-Plug 'mattn/emmet-vim'
+" auto complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'nvim-lua/popup.nvim'
+
+" Eslint
+
+"Search and similars
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-
-"Terminal
-Plug 'voldikss/vim-floaterm'
 call plug#end()
 
-source ~/.config/nvim/plug-config/coc.vim
-source ~/.config/nvim/plug-config/which-key.vim
-
 set background=dark
-colorscheme synthwave84
+colorscheme gruvbox
 
-"Coc.vim configuration
+source ~/.config/nvim/which-key.vim
+nnoremap <leader>ntt :NERDTreeToggle<CR>
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>sz <cmd>Telescope find_files<cr>
+nnoremap <leader>st <cmd>Telescope live_grep<cr>
+nnoremap <leader>sB <cmd>Telescope buffers<cr>
+
+"move line up or down
+nnoremap <A-Down> :m .+1<CR>==
+nnoremap <A-Up> :m .-2<CR>==
+inoremap <A-Down> <ESC>:m .+1<CR>==gi
+inoremap <A-Up> <ESC>:m .-2<CR>==gi
+vnoremap <A-Down> :m '>+1<CR>gv=gv
+vnoremap <A-Up> :m '<-2<CR>gv=gv
+
+"Function that returns the current git branch
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+"Change NerdTree arrows
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#hunks#enabled=1
+let g:airline_section_b='%{GitBranch()}'
+let g:airline_theme='deus'
+
+let NERDTreeShowHidden=1
+
+" CoC config
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -100,77 +123,3 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-"end of coc.vim config
-
-"Function that returns the current git branch
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-"returns the number of linter errors
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-    return l:counts.total == 0 ? 'OK' : printf(
-        \   '%d⨉ %d⚠ ',
-        \   all_non_errors,
-        \   all_errors
-        \)
-endfunction
-
-"Close vim if the only window left its filetree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-"Change NerdTree arrows
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#hunks#enabled=1
-let g:airline_section_b='%{GitBranch()}'
-let g:airline_section_y='%{LinterStatus()}'
-let g:airline_theme='deus'
-let NERDTreeShowHidden=1
-let g:vue_pre_processors = 'detect_on_enter'
-
-nnoremap <leader>udt :UndotreeToggle<CR>
-nnoremap <leader>ntt :NERDTreeToggle<CR>
-
-"live preview of markdown files
-nmap <leader>md :MarkdownPreviewToggle<CR>
-
-" Find files using Telescope command-line sugar.
-nnoremap <leader>sz <cmd>Telescope find_files<cr>
-nnoremap <leader>st <cmd>Telescope live_grep<cr>
-nnoremap <leader>sB <cmd>Telescope buffers<cr>
-
-"move line up or down
-nnoremap <A-Down> :m .+1<CR>==
-nnoremap <A-Up> :m .-2<CR>==
-inoremap <A-Down> <ESC>:m .+1<CR>==gi
-inoremap <A-Up> <ESC>:m .-2<CR>==gi
-vnoremap <A-Down> :m '>+1<CR>gv=gv
-vnoremap <A-Up> :m '<-2<CR>gv=gv
-
-"Divide in new line
-nnoremap <C-n> i<CR><ESC>
-
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit'
-  \}
-
-"'' Floatterm ''"
-if filereadable(expand("~/.config/nvim/plugged/vim-floaterm/plugin/floaterm.vim"))
-  nnoremap <leader>fl :FloatermNew --autoclose=2 --height=0.8 --width=0.8 --wintype=floating lazygit<CR>
-  nnoremap <leader>ft :FloatermNew --autoclose=2 --height=0.75 --width=0.75 --wintype=floating<CR>
-endif
-" Floatterm Configuration
-let g:floaterm_keymap_new    = '<F7>'
-let g:floaterm_keymap_prev   = '<F8>'
-let g:floaterm_keymap_next   = '<F9>'
-let g:floaterm_keymap_toggle = '<F12>'
-

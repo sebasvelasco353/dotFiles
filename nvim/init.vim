@@ -59,6 +59,8 @@ Plug 'liuchengxu/vim-which-key'
 " auto complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Eslint
+
 "Search and similars
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -68,8 +70,6 @@ set background=dark
 colorscheme gruvbox
 
 source ~/.config/nvim/which-key.vim
-
-nnoremap <leader>udt :UndotreeToggle<CR>
 nnoremap <leader>ntt :NERDTreeToggle<CR>
 
 " Find files using Telescope command-line sugar.

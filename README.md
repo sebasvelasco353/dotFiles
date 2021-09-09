@@ -28,7 +28,7 @@ install script remember to add them to the brew file using this command in the .
 - [] Add platformio plugin to VS Code or find a way to code, run, autocomplete and linter arduino in nvim
 
 
-# After a clean PopOS install
+# PopOS
 Dotfiles collection for my Dotfiles configuration and instructions for installing the apps i use
 every day on my PopOS installation.
 
